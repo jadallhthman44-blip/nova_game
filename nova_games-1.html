@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOVA GAMES | شحن الألعاب</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,Tahoma,sans-serif;background:#070b16;color:#fff}
+header{padding:18px 6%;display:flex;justify-content:space-between;align-items:center;
+background:#0b1020;border-bottom:1px solid #202b44;position:sticky;top:0;z-index:5}
+.logo{font-size:25px;font-weight:bold}.logo span{color:#00e5ff}
+nav a{color:#ddd;text-decoration:none;margin:0 8px}
+.hero{text-align:center;padding:80px 20px;
+background:radial-gradient(circle at top,#123047,#070b16 65%)}
+.hero h1{font-size:48px;margin-bottom:15px}.hero h1 span{color:#00e5ff}
+.hero p{color:#aab5c8;font-size:18px;margin-bottom:28px}
+.btn{display:inline-block;background:#00d9ff;color:#031018;padding:13px 24px;
+border-radius:12px;text-decoration:none;font-weight:bold;margin:5px}
+section{padding:65px 7%}.title{text-align:center;margin-bottom:30px}
+.title h2{font-size:32px}.title p{color:#8997ad;margin-top:7px}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.card{background:#0d1424;border:1px solid #26334d;border-radius:20px;padding:25px}
+.icon{font-size:48px}.card h3{font-size:25px;margin:8px 0}
+.card p{color:#9aa8bd;margin-bottom:18px}
+.price{display:flex;justify-content:space-between;background:#111a2d;
+padding:12px;margin:8px 0;border-radius:10px}
+.price b{color:#00e5ff}
+.order{max-width:650px;margin:auto;background:#0d1424;padding:25px;
+border:1px solid #26334d;border-radius:20px}
+label{display:block;color:#c4cede;margin:12px 0 6px}
+input,select{width:100%;padding:13px;border-radius:10px;border:1px solid #2a3853;
+background:#080e1b;color:#fff}
+button{width:100%;border:0;cursor:pointer;margin-top:18px;font-size:16px}
+.pay{display:flex;justify-content:center;gap:15px;flex-wrap:wrap}
+.pay div{background:#101a2d;border:1px solid #26334d;padding:18px 28px;border-radius:14px}
+footer{text-align:center;padding:30px;border-top:1px solid #202b44;color:#738197}
+@media(max-width:700px){nav{display:none}.hero h1{font-size:36px}.cards{grid-template-columns:1fr}section{padding:50px 5%}}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">NOVA <span>GAMES</span> 🎮</div>
+  <nav>
+    <a href="#home">الرئيسية</a>
+    <a href="#games">الألعاب</a>
+    <a href="#order">اطلب الآن</a>
+    <a href="#payment">الدفع</a>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <h1>اشحن لعبتك <span>بسرعة ⚡</span></h1>
+  <p>متجر NOVA GAMES لشحن جواهر Free Fire وشدات PUBG</p>
+  <a class="btn" href="#order">🛒 اطلب الآن</a>
+  <a class="btn" href="#games">🎮 الباقات</a>
+</section>
+
+<section id="games">
+  <div class="title">
+    <h2>🎮 الألعاب</h2>
+    <p>اختر اللعبة والباقه المناسبة لك</p>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <div class="icon">💎</div>
+      <h3>Free Fire</h3>
+      <p>شحن جواهر فري فاير</p>
+      <div class="price"><span>100 جوهرة</span><b>8,300</b></div>
+      <div class="price"><span>500 جوهرة</span><b>حسب الطلب</b></div>
+      <div class="price"><span>1000 جوهرة</span><b>حسب الطلب</b></div>
+      <div class="price"><span>2000 جوهرة</span><b>حسب الطلب</b></div>
+    </div>
+
+    <div class="card">
+      <div class="icon">🎯</div>
+      <h3>PUBG Mobile</h3>
+      <p>شحن شدات PUBG Mobile</p>
+      <div class="price"><span>60 UC</span><b>8,700</b></div>
+      <div class="price"><span>25 + 300 UC</span><b>39,600</b></div>
+      <div class="price"><span>60 + 600 UC</span><b>78,300</b></div>
+      <div class="price"><span>300 + 1500 UC</span><b>195,000</b></div>
+      <div class="price"><span>850 + 3000 UC</span><b>390,000</b></div>
+    </div>
+  </div>
+</section>
+
+<section id="order">
+  <div class="title">
+    <h2>🛒 اطلب الآن</h2>
+    <p>أدخل بيانات طلبك</p>
+  </div>
+
+  <form class="order" onsubmit="sendOrder(event)">
+    <label>اللعبة</label>
+    <select id="game" required>
+      <option value="">اختر اللعبة</option>
+      <option>Free Fire</option>
+      <option>PUBG Mobile</option>
+    </select>
+
+    <label>الباقة</label>
+    <input id="pack" placeholder="مثال: 100 جوهرة أو 60 UC" required>
+
+    <label>Player ID</label>
+    <input id="player" placeholder="أدخل ID اللاعب" required>
+
+    <label>طريقة الدفع</label>
+    <select id="payment" required>
+      <option value="">اختر طريقة الدفع</option>
+      <option>ماي كاشي</option>
+      <option>بنكك</option>
+    </select>
+
+    <button class="btn" type="submit">📲 إرسال الطلب</button>
+  </form>
+</section>
+
+<section id="payment">
+  <div class="title">
+    <h2>💳 طرق الدفع</h2>
+    <p>الدفع متاح عبر</p>
+  </div>
+  <div class="pay">
+    <div>💰 ماي كاشي</div>
+    <div>🏦 بنكك</div>
+  </div>
+</section>
+
+<footer>
+  © 2026 NOVA GAMES — جميع الحقوق محفوظة 🎮
+</footer>
+
+<script>
+function sendOrder(e){
+  e.preventDefault();
+  const game=document.getElementById("game").value;
+  const pack=document.getElementById("pack").value;
+  const player=document.getElementById("player").value;
+  const payment=document.getElementById("payment").value;
+
+  alert("تم تجهيز طلبك!\n\nاللعبة: "+game+
+        "\nالباقة: "+pack+
+        "\nPlayer ID: "+player+
+        "\nالدفع: "+payment+
+        "\n\nسنضيف التواصل المباشر في الخطوة القادمة.");
+}
+</script>
+
+</body>
+</html>
