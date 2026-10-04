@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NOVA GAME — متجر الألعاب</title>
+<style>
+:root{--bg:#070910;--card:#111624;--line:#252d43;--a:#7657ff;--b:#00d8ff;--txt:#fff;--muted:#9ca6bb}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--txt);font-family:Tahoma,Arial,sans-serif}
+header{position:sticky;top:0;z-index:10;background:#090c15ee;backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:15px 6%;display:flex;align-items:center;justify-content:space-between}
+.logo{font-weight:900;font-size:23px}.logo span{color:var(--b)}nav a{color:#ddd;text-decoration:none;margin:0 8px;font-size:14px}
+.actions button,.btn{border:0;border-radius:11px;padding:11px 16px;background:linear-gradient(100deg,var(--a),var(--b));color:white;font-weight:800;cursor:pointer}
+.actions button{background:#171d2d;border:1px solid var(--line);margin-right:6px}.hero{text-align:center;padding:75px 6%;background:radial-gradient(circle at 50% 0,#30215f,transparent 48%)}
+.badge{display:inline-block;border:1px solid #39466a;padding:8px 13px;border-radius:30px;color:#a8efff;font-size:13px}
+h1{font-size:52px;margin:18px 0 8px}.hero p{max-width:680px;margin:0 auto 28px;color:var(--muted);line-height:1.8}
+section{padding:48px 6%}.title{text-align:center;margin-bottom:25px}.title h2{margin:0 0 7px}.title p{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:17px}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px}.game{font-size:40px}.price{color:var(--b);font-weight:900;font-size:20px;margin:12px 0}.card button{width:100%;padding:11px;border:0;border-radius:10px;background:#20283b;color:#fff;cursor:pointer}.card button:hover{background:var(--a)}
+footer{text-align:center;border-top:1px solid var(--line);padding:28px;color:#747e95}
+.modal{display:none;position:fixed;inset:0;background:#000a;z-index:20;align-items:center;justify-content:center;padding:18px}.box{width:min(520px,100%);background:#101624;border:1px solid var(--line);border-radius:20px;padding:24px;max-height:90vh;overflow:auto}.box h2{margin-top:0}
+input,select{width:100%;padding:13px;margin:7px 0;background:#090d16;border:1px solid #2a344d;border-radius:10px;color:white}.close{float:left;background:none;border:0;color:#aaa;font-size:25px;cursor:pointer}
+.row{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid #20283a}.qty button{padding:4px 9px}.total{font-size:21px;font-weight:900;margin:18px 0}.note{color:#ffcf70;font-size:13px;line-height:1.7}
+@media(max-width:650px){nav{display:none}h1{font-size:38px}.hero{padding:55px 6%}}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">NOVA <span>GAME</span> 🎮</div>
+<nav><a href="#home">الرئيسية</a><a href="#games">الألعاب</a><a href="#offers">العروض</a><a href="#contact">التواصل</a></nav>
+<div class="actions"><button onclick="openModal('login')">حسابي 👤</button><button onclick="openCart()">السلة 🛒 <b id="count">0</b></button></div>
+</header>
+
+<main id="home">
+<section class="hero"><span class="badge">⚡ شحن ألعاب ومنتجات رقمية</span><h1>NOVA GAME</h1>
+<p>متجر ألعاب عصري وسريع. اختر منتجك، أضفه للسلة، ثم أرسل طلبك بسهولة.</p>
+<a class="btn" href="#games">ابدأ التسوق 🚀</a></section>
+
+<section id="games"><div class="title"><h2>🎮 الألعاب</h2><p>اختر منتجك وأضفه للسلة</p></div><div class="grid" id="products"></div></section>
+
+<section id="offers"><div class="title"><h2>🔥 العروض</h2><p>عروض مميزة قابلة للتعديل</p></div>
+<div class="grid">
+<div class="card"><div class="game">💎</div><h3>Free Fire</h3><p>100 جوهرة</p><div class="price">8,300</div><button onclick="add('Free Fire — 100 💎',8300)">أضف للسلة</button></div>
+<div class="card"><div class="game">🎟️</div><h3>Booyah Pass</h3><p>عرض خاص</p><div class="price">29,900</div><button onclick="add('Booyah Pass',29900)">أضف للسلة</button></div>
+</div></section>
+
+<section id="contact"><div class="title"><h2>📲 تواصل معنا</h2><p>ضع روابطك الحقيقية في الإعدادات داخل الكود</p></div>
+<div class="grid"><div class="card"><h3>💬 واتساب</h3><p>للطلب والاستفسار</p><a class="btn" href="#" onclick="return false">فتح واتساب</a></div>
+<div class="card"><h3>✈️ تلغرام</h3><p>تابع العروض والفعاليات</p><a class="btn" href="#" onclick="return false">فتح تلغرام</a></div>
+<div class="card"><h3>💳 الدفع</h3><p>My Cashy — Bankak</p><p class="note">أضف أرقام الحسابات الحقيقية قبل نشر الموقع.</p></div></div></section>
+</main>
+
+<footer>© 2026 NOVA GAME — جميع الحقوق محفوظة</footer>
+
+<div class="modal" id="modal"><div class="box"><button class="close" onclick="closeModal()">×</button><div id="modalContent"></div></div></div>
+
+<script>
+const products=[
+['PUBG Mobile','🔫','60 UC',8700],['PUBG Mobile','🔫','25 + 300 UC',39600],
+['PUBG Mobile','🔫','60 + 600 UC',78300],['PUBG Mobile','🔫','300 + 1500 UC',195000],
+['PUBG Mobile','🔫','850 + 3000 UC',390000],['Free Fire','🔥','100 💎',8300],
+['Fortnite','⚡','2800 V-Bucks',19500],['Minecraft','⛏️','1720 Coins',91500],
+['Minecraft','⛏️','3500 Coins',182500]
+];
+let cart=JSON.parse(localStorage.getItem('novaCart')||'[]');
+function money(n){return n.toLocaleString('en-US')}
+function render(){document.getElementById('products').innerHTML=products.map((p,i)=>`<div class="card"><div class="game">${p[1]}</div><h3>${p[0]}</h3><p>${p[2]}</p><div class="price">${money(p[3])}</div><button onclick="add('${p[0]} — ${p[2]}',${p[3]})">أضف للسلة 🛒</button></div>`).join('');document.getElementById('count').textContent=cart.reduce((a,x)=>a+x.q,0)}
+function save(){localStorage.setItem('novaCart',JSON.stringify(cart));render()}
+function add(name,price){let x=cart.find(a=>a.name===name);x?x.q++:cart.push({name,price,q:1});save();alert('تمت إضافة المنتج إلى السلة ✅')}
+function openCart(){openModal('cart')}
+function cartHTML(){if(!cart.length)return '<h2>السلة 🛒</h2><p>السلة فارغة.</p>';let total=cart.reduce((a,x)=>a+x.price*x.q,0);return `<h2>سلة المشتريات 🛒</h2>${cart.map((x,i)=>`<div class="row"><span>${x.name}<br><small>${money(x.price)} × ${x.q}</small></span><span class="qty"><button onclick="change(${i},-1)">−</button> <b>${x.q}</b> <button onclick="change(${i},1)">+</button></span></div>`).join('')}<div class="total">الإجمالي: ${money(total)}</div><button class="btn" onclick="checkout()">متابعة الطلب</button>`}
+function change(i,d){cart[i].q+=d;if(cart[i].q<=0)cart.splice(i,1);save();openCart()}
+function checkout(){openModal('checkout')}
+function openLogin(){openModal('login')}
+function openModal(type){document.getElementById('modal').style.display='flex';let c=document.getElementById('modalContent');
+if(type==='cart')c.innerHTML=cartHTML();
+if(type==='login')c.innerHTML='<h2>تسجيل الدخول 👤</h2><input placeholder="البريد الإلكتروني"><input type="password" placeholder="كلمة المرور"><button class="btn" onclick="alert(\'واجهة تسجيل الدخول جاهزة للربط بقاعدة بيانات\');closeModal()">دخول</button><p class="note">هذه نسخة واجهة أمامية؛ الحسابات الحقيقية تحتاج قاعدة بيانات وخادم آمن.</p>';
+if(type==='checkout')c.innerHTML=`<h2>إتمام الطلب 💳</h2><input id="customer" placeholder="الاسم"><input id="phone" placeholder="رقم التواصل"><input id="uid" placeholder="ID اللعبة / البيانات المطلوبة"><select id="pay"><option>My Cashy</option><option>Bankak</option></select><p class="note">أضف رقم حساب الدفع الحقيقي هنا بعد تجهيز الموقع للنشر.</p><button class="btn" onclick="sendOrder()">إرسال الطلب 📲</button>`;
+}
+function sendOrder(){let total=cart.reduce((a,x)=>a+x.price*x.q,0),name=document.getElementById('customer').value,phone=document.getElementById('phone').value;if(!name||!phone){alert('أدخل الاسم ورقم التواصل');return}let text='طلب NOVA GAME%0Aالاسم: '+encodeURIComponent(name)+'%0Aالهاتف: '+encodeURIComponent(phone)+'%0Aالإجمالي: '+money(total);window.open('https://wa.me/?text='+text,'_blank')}
+function closeModal(){document.getElementById('modal').style.display='none'}
+render();
+</script>
+</body></html>
